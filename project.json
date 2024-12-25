@@ -1,0 +1,77 @@
+{
+  "name": "CollectionReport_Dispatch",
+  "projectId": "c2282f1e-aef3-4e20-b63f-1b84d2bd12e7",
+  "description": "DispatchQueueItem.s-Global",
+  "main": "Main.xaml",
+  "dependencies": {
+    "RPA_Template": "[2024.11.8]",
+    "UiPath.Database.Activities": "[1.9.0]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "23.10.7.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "workflowSerialization": "DataContract",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true,
+    "pipType": "ChildSession"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "aea98479-f93c-4b12-98ef-2df11a0344e6",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Business Process Tests\\Main_TC_PlaceHolder.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "fd71fdef-0581-4f70-83b6-4e76662d8fe7",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Business Process Tests\\BuildDataTable_TC_PlaceHolder.xaml"
+      }
+    ],
+    "modernBehavior": true,
+    "saveToCloud": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "e5e4af22-dbe1-4b0e-a95a-1733c95c720a",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {
+    "iconUrl": ".package/hms.png"
+  },
+  "targetFramework": "Windows"
+}
