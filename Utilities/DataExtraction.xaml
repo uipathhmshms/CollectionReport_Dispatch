@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1465,1016</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>980,1016</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DataExtraction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -208,14 +208,6 @@
                   <ui:FilterDataTable DataTable="[io_dt_data]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="FilterDataTable_5" OutputDataTable="[io_dt_data]" SelectColumnsMode="Keep">
                     <ui:FilterDataTable.Filters>
                       <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                        <ui:FilterOperationArgument BooleanOperator="And" Operator="GT">
-                          <ui:FilterOperationArgument.Column>
-                            <InArgument x:TypeArguments="x:String">["סכום בחובה"]</InArgument>
-                          </ui:FilterOperationArgument.Column>
-                          <ui:FilterOperationArgument.Operand>
-                            <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
-                          </ui:FilterOperationArgument.Operand>
-                        </ui:FilterOperationArgument>
                         <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="NOTEMPTY">
                           <ui:FilterOperationArgument.Column>
                             <InArgument x:TypeArguments="x:String">["מזהה מנהל פרויקט"]</InArgument>
@@ -248,7 +240,7 @@
                           <av:PointCollection x:Key="ConnectorLocation">290,785 290,805</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Filtered data table 'io_dt_data' according to the following filter criteria: [Column: סכום בחובה, Operator: Greater than, Operand: 0] AND [Column: מזהה מנהל פרויקט, Operator: Not Empty, Operand: null], and the following columns were selected: [שם מנהל פרויקט, מזהה מנהל פרויקט, קוד חשבון, שם חשבון, קוד סעיף תקציבי, סעיף תקציבי, אסמכתא, תאריך אסמכתא, תאריך לתשלום, תאריך פעילות, יתרה]&quot;]" />
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Filtered data table 'io_dt_data' according to the following filter criteria: [Column: מזהה מנהל פרויקט, Operator: Not Empty, Operand: null], and the following columns were selected: [שם מנהל פרויקט, מזהה מנהל פרויקט, קוד חשבון, שם חשבון, קוד סעיף תקציבי, סעיף תקציבי, אסמכתא, תאריך אסמכתא, תאריך לתשלום, תאריך פעילות, יתרה]&quot;]" />
                       <FlowStep.Next>
                         <FlowStep x:Name="__ReferenceID7">
                           <sap:WorkflowViewStateService.ViewState>
