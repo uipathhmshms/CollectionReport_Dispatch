@@ -1,7 +1,13 @@
 # Collection Report Dispatch
 
 ## Project Overview
-This UiPath automation project processes payroll data from a company's payroll system and distributes reports to managers based on their unique identifiers. The automation segregates employee data by manager and creates individual reports that are then queued for processing.
+This UiPath automation project processes payroll data from a company's payroll system and distributes reports to managers based on their unique identifiers. 
+The automation segregates employee data by manager and creates individual reports that are then queued for processing.
+
+### Quick Overview
+![Sample Data Structure](/Documentation/dataFlow1.png)
+![Sample Data Structure](/Documentation/dataFlow2.png)
+*Quick overview of the process steps*
 
 ## Main Workflow Components
 
@@ -9,10 +15,6 @@ This UiPath automation project processes payroll data from a company's payroll s
 - Extracts payroll data from the company's database into a tabular data structure
 - Sorts the data by manager ID and removes irrelevant columns
 - Creates individual data tables for each manager containing their relevant data
-
-### Data Structure Example
-![Sample Data Structure](/Documentation/img1.png)
-*Sample payroll data showing manager ID, name, and associated employee records*
 
 ### 2. Queue Management
 The workflow processes data in batches by manager and creates queue items with the following properties:
@@ -67,20 +69,9 @@ The workflow processes data in batches by manager and creates queue items with t
 1. Ensure all required dependencies are installed
 2. Configure database connection settings
 3. Verify queue paths and permissions
-4. Set up email configurations if needed
 
 ## Notes
 - Current implementation uses a test email address (LidorM@hms.co.il)
 - TODO: Add manager email functionality (marked in workflow)
 - The process handles data batching automatically based on manager changes
 - All dates are formatted as dd/MM/yyyy
-
-## Error Handling
-The workflow includes basic error handling through the UiPath framework. Additional error handling may need to be implemented based on specific requirements.
-
-## Future Improvements
-1. Implement manager email lookup functionality
-2. Add data validation steps
-3. Implement retry logic for queue operations
-4. Add logging and monitoring capabilities
-5. Create configuration file for email addresses and queue paths
