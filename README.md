@@ -1,7 +1,7 @@
 # Collection Report Dispatch
 
 ## Project Overview
-This UiPath automation project processes payroll data from a company's payroll system and distributes reports to managers based on their unique identifiers. 
+This UiPath automation project processes payroll data from a company's payroll system and distributes reports to managers based on their unique identifiers. <br>
 The automation segregates employee data by manager and creates individual reports that are then queued for processing.
 
 ### Quick Overview
