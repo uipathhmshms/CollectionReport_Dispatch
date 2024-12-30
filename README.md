@@ -1,38 +1,86 @@
-### HmsTeam.DispatchQueueItem.s Template ###
-**DispatchQueueItem.s**
+# Collection Report Dispatch
 
-* Built on top of *hms GeneralProcess Template* template
-* Uses *State Machine* layout for the phases of automation project
-* Offers high level logging, exception handling and recovery
-* Keeps external settings in Orchestrator assets
-* Pulls credentials from Orchestrator assets
-* Gets records data from custom source like DB, business app, etc.
-* Creats queue items in Orchestrator queue
-* Takes screenshots in case of system exceptions
+## Project Overview
+This UiPath automation project processes payroll data from a company's payroll system and distributes reports to managers based on their unique identifiers. The automation segregates employee data by manager and creates individual reports that are then queued for processing.
 
+## Main Workflow Components
 
-### How It Works ###
+### 1. Data Collection and Processing
+- Extracts payroll data from the company's database into a tabular data structure
+- Sorts the data by manager ID and removes irrelevant columns
+- Creates individual data tables for each manager containing their relevant data
 
-1. **BEGINNINGACTIONS PROCESS**
- + *BeginningActions* - Filling ProcessSetup variable with Assets, Job details, Environment properties etc.
- + *CheckForDownTime* - Checking if process may now run or not, depends on it's downtimes and it's business apps downtimes.
+### Data Structure Example
+![Sample Data Structure](/Documentation/images/img1.png)
+*Sample payroll data showing manager ID, name, and associated employee records*
 
-2. **BUILD DATATABLE**
- + ./Framework/*BuildDataTable* - Custom actions for creating the Datatable of the records that will be dispatched into Orchestartor queue.
+### 2. Queue Management
+The workflow processes data in batches by manager and creates queue items with the following properties:
+- ReportData: JSON serialized data containing manager-specific information
+- ReportRowsNo: Number of rows in the manager's report
+- EmailAddress: Manager's email address (currently set to a test address)
+- Reference: Unique identifier combining manager name, ID, and date
 
-3. **BULK ADD QUEUE ITEMS**
- + *BulkAddQueueItems* - Using Bulk add queue items activity for dispatching the items. Erros is exist, will be reflected in the following variables: boo_BulkHadErrors, boo_AllErrorsUniqueRef, dt_QueueItemsFailed
+### 3. Main Process Flow
+1. Initializes output data table for queue items
+2. Sets initial manager ID and position from first row
+3. Iterates through data rows:
+   - Detects manager changes in the data
+   - Creates temporary data tables for current manager
+   - Converts data to dictionary format
+   - Adds items to the queue with proper references
+   - Updates tracking variables for next iteration
 
-4. **BEFORE END PROCESS**
- + ./Framework/*BeforeEndProcess* - Performing actions that must run only once, at the end of the process, like sending email, report, etc.
+## Technical Details
 
+### Input Arguments
+- `in_dt_data`: DataTable
+  - Contains raw payroll data
+  - Must include columns:
+    - מזהה מנהל פרויקט (Manager ID)
+    - שם מנהל פרויקט (Manager Name)
+    - Additional employee data columns
 
-### For New Project ###
+### Output Arguments
+- `io_dt_dataForBulkAddQueueITems`: DataTable
+  - Contains processed queue items
+  - Columns:
+    - ReportData (string, max length: 1000000)
+    - ReportRowsNo (integer)
+    - EmailAddress (string, max length: 100)
+    - Reference (string, max length: 80)
+    - Priority (string, max length: 20, default: "Low")
 
-1. Ensure existness of the Orchestrator required folders of Root\BusinessDepartment, Root\BusinessDepartment\General and Root\BusinessDepartment\BusinessProcess
-2. In case you are using action center, ensure existness of a catalog in the relevant Orchestrator folder
-3. Fill the queue name in argument in_str_QueueName
-4. Implement ExecuteTransaction.xaml workflow and invoke other workflows related to the process being automated
+### Queue Configuration
+- Queue Path: Root/Finance/CollectionReport
+- Queue Type: Test
+- Priority: Low
+- Reference Format: `{ManagerName}_{ManagerID}_{CurrentDate}`
 
-## UseCases  ##
-* Robot runs a DB query, populates the result in a Datatable and sent the rows to Orchestrator queue.
+## Dependencies
+- System.Data
+- Newtonsoft.Json
+- UiPath.Excel.Activities
+- UiPath.System.Activities
+
+## Setup Instructions
+1. Ensure all required dependencies are installed
+2. Configure database connection settings
+3. Verify queue paths and permissions
+4. Set up email configurations if needed
+
+## Notes
+- Current implementation uses a test email address (LidorM@hms.co.il)
+- TODO: Add manager email functionality (marked in workflow)
+- The process handles data batching automatically based on manager changes
+- All dates are formatted as dd/MM/yyyy
+
+## Error Handling
+The workflow includes basic error handling through the UiPath framework. Additional error handling may need to be implemented based on specific requirements.
+
+## Future Improvements
+1. Implement manager email lookup functionality
+2. Add data validation steps
+3. Implement retry logic for queue operations
+4. Add logging and monitoring capabilities
+5. Create configuration file for email addresses and queue paths
