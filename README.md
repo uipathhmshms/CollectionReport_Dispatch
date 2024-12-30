@@ -11,7 +11,7 @@ This UiPath automation project processes payroll data from a company's payroll s
 - Creates individual data tables for each manager containing their relevant data
 
 ### Data Structure Example
-![Sample Data Structure](/Documentation/images/img1.png)
+![Sample Data Structure](/Documentation/img1.png)
 *Sample payroll data showing manager ID, name, and associated employee records*
 
 ### 2. Queue Management
