@@ -204,7 +204,10 @@
               <Flowchart.StartNode>
                 <x:Reference>__ReferenceID7</x:Reference>
               </Flowchart.StartNode>
-              <FlowDecision x:Name="__ReferenceID7" Condition="[not CurrentRow(&quot;מזהה מנהל פרויקט&quot;).tostring.equals(str_currentManagerId)]" DisplayName="Reached to a new manager?" sap:VirtualizedContainerService.HintSize="154,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
+              <FlowDecision x:Name="__ReferenceID7" DisplayName="Reached to a new manager?" sap:VirtualizedContainerService.HintSize="154,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
+                <FlowDecision.Condition>
+                  <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Not CurrentRow(&quot;מזהה מנהל פרויקט&quot;).tostring.equals(str_currentManagerId) OrElse&#xD;&#xA;int_loopIndex=(in_dt_data.RowCount-1)" />
+                </FlowDecision.Condition>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <av:Point x:Key="ShapeLocation">483,147.5</av:Point>
