@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1137,1016</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1137,906</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DataExtraction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -102,7 +102,7 @@
       <AssemblyReference>System.Runtime.InteropServices.RuntimeInformation</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="Connects to DB and retrieves the data,&#xA;Merge Customers  Budget  data,&#xA;Filters and sorts the merges data" DisplayName="DataExtraction" sap:VirtualizedContainerService.HintSize="634,951" sap2010:WorkflowViewState.IdRef="Flowchart_4">
+  <Flowchart sap2010:Annotation.AnnotationText="Connects to DB and retrieves the data,&#xA;Merge Customers  Budget  data,&#xA;Filters and sorts the merges data" DisplayName="DataExtraction" sap:VirtualizedContainerService.HintSize="734,841" sap2010:WorkflowViewState.IdRef="Flowchart_4">
     <Flowchart.Variables>
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbConn_connection" />
       <Variable x:TypeArguments="x:String" Name="str_connectionString" />
@@ -115,13 +115,14 @@
         <av:Point x:Key="ShapeLocation">80,2.5</av:Point>
         <av:Size x:Key="ShapeSize">60,75</av:Size>
         <av:PointCollection x:Key="ConnectorLocation">140,40 170,40 170,40.5 190,40.5</av:PointCollection>
-        <x:Double x:Key="Height">857</x:Double>
+        <x:Double x:Key="Height">747</x:Double>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        <x:Double x:Key="Width">700</x:Double>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID9</x:Reference>
+      <x:Reference>__ReferenceID7</x:Reference>
     </Flowchart.StartNode>
     <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_5">
       <sap:WorkflowViewStateService.ViewState>
@@ -133,12 +134,12 @@
       </sap:WorkflowViewStateService.ViewState>
       <ui:DatabaseDisconnect DatabaseConnection="[dbConn_connection]" DisplayName="Disconnect from Database" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_4" />
       <FlowStep.Next>
-        <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_6">
+        <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">73,449</av:Point>
               <av:Size x:Key="ShapeSize">434,124</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">290,573 290,591</av:PointCollection>
+              <av:PointCollection x:Key="ConnectorLocation">290,573 290,593</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:MultipleAssign sap2010:Annotation.AnnotationText="change the column named &quot;סעיף תקציבי&quot; to &quot;קוד סעיף תקציבי&quot;&#xA;in customers table&#xA;+&#xA;changing the column named &quot;תעריך ערך&quot; to &quot;תאריך לתשלום&quot;" DisplayName="Columns name adjusments" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
@@ -169,91 +170,42 @@
             </sap:WorkflowViewStateService.ViewState>
           </ui:MultipleAssign>
           <FlowStep.Next>
-            <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_7">
+            <FlowStep x:Name="__ReferenceID6">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">190,591</av:Point>
+                  <av:Point x:Key="ShapeLocation">190,593</av:Point>
                   <av:Size x:Key="ShapeSize">200,52</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">290,643 290,661</av:PointCollection>
+                  <av:PointCollection x:Key="ConnectorLocation">290,645 290,665</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:JoinDataTables DataTable1="[dt_customersData]" DataTable2="[dt_budgetData]" DisplayName="Join Data Tables" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="JoinDataTables_5" JoinType="Inner" OutputDataTable="[io_dt_data]">
-                <ui:JoinDataTables.Arguments>
-                  <scg:List x:TypeArguments="ui:JoinOperationArgument" Capacity="4">
-                    <ui:JoinOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EQ">
-                      <ui:JoinOperationArgument.Column1>
-                        <InArgument x:TypeArguments="x:String">["קוד סעיף תקציבי"]</InArgument>
-                      </ui:JoinOperationArgument.Column1>
-                      <ui:JoinOperationArgument.Column2>
-                        <InArgument x:TypeArguments="x:String">["קוד סעיף תקציבי"]</InArgument>
-                      </ui:JoinOperationArgument.Column2>
-                    </ui:JoinOperationArgument>
-                  </scg:List>
-                </ui:JoinDataTables.Arguments>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:JoinDataTables>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Columns name were changed in 'dt_customersData' data table. The Column 'סעיף תקציבי' to 'קוד סעיף תקציבי' and  'תאריך ערך' to 'תאריך לתשלום'&quot;]" />
               <FlowStep.Next>
-                <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_8">
+                <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_7">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:Point x:Key="ShapeLocation">190,661</av:Point>
+                      <av:Point x:Key="ShapeLocation">190,665</av:Point>
                       <av:Size x:Key="ShapeSize">200,52</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">290,713 290,733</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:FilterDataTable DataTable="[io_dt_data]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="334,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_5" OutputDataTable="[io_dt_data]" SelectColumnsMode="Keep">
-                    <ui:FilterDataTable.Filters>
-                      <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                        <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="NOTEMPTY">
-                          <ui:FilterOperationArgument.Column>
-                            <InArgument x:TypeArguments="x:String">["מזהה מנהל פרויקט"]</InArgument>
-                          </ui:FilterOperationArgument.Column>
-                        </ui:FilterOperationArgument>
+                  <ui:JoinDataTables DataTable1="[dt_customersData]" DataTable2="[dt_budgetData]" DisplayName="Join Data Tables" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="JoinDataTables_5" JoinType="Inner" OutputDataTable="[io_dt_data]">
+                    <ui:JoinDataTables.Arguments>
+                      <scg:List x:TypeArguments="ui:JoinOperationArgument" Capacity="4">
+                        <ui:JoinOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EQ">
+                          <ui:JoinOperationArgument.Column1>
+                            <InArgument x:TypeArguments="x:String">["קוד סעיף תקציבי"]</InArgument>
+                          </ui:JoinOperationArgument.Column1>
+                          <ui:JoinOperationArgument.Column2>
+                            <InArgument x:TypeArguments="x:String">["קוד סעיף תקציבי"]</InArgument>
+                          </ui:JoinOperationArgument.Column2>
+                        </ui:JoinOperationArgument>
                       </scg:List>
-                    </ui:FilterDataTable.Filters>
-                    <ui:FilterDataTable.SelectColumns>
-                      <scg:List x:TypeArguments="InArgument" Capacity="16">
-                        <InArgument x:TypeArguments="x:String">["שם מנהל פרויקט"]</InArgument>
-                        <InArgument x:TypeArguments="x:String">["קוד מנהל פרויקט"]</InArgument>
-                        <InArgument x:TypeArguments="x:String">["קוד חשבון"]</InArgument>
-                        <InArgument x:TypeArguments="x:String">["שם חשבון"]</InArgument>
-                        <InArgument x:TypeArguments="x:String">["קוד סעיף תקציבי"]</InArgument>
-                        <InArgument x:TypeArguments="x:String">["סעיף תקציבי"]</InArgument>
-                        <InArgument x:TypeArguments="x:String">["אסמכתא"]</InArgument>
-                        <InArgument x:TypeArguments="x:String">["תאריך אסמכתא"]</InArgument>
-                        <InArgument x:TypeArguments="x:String">["תאריך לתשלום"]</InArgument>
-                        <InArgument x:TypeArguments="x:String">["תאריך פעילות"]</InArgument>
-                        <InArgument x:TypeArguments="x:String">["יתרה"]</InArgument>
-                      </scg:List>
-                    </ui:FilterDataTable.SelectColumns>
-                  </ui:FilterDataTable>
-                  <FlowStep.Next>
-                    <FlowStep x:Name="__ReferenceID8" sap2010:WorkflowViewState.IdRef="FlowStep_9">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <av:Point x:Key="ShapeLocation">190,733</av:Point>
-                          <av:Size x:Key="ShapeSize">200,52</av:Size>
-                          <av:PointCollection x:Key="ConnectorLocation">290,785 290,805</av:PointCollection>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Filtered data table 'io_dt_data' according to the following filter criteria: [Column: קוד מנהל פרויקט, Operator: Not Empty, Operand: null], and the following columns were selected: [שם מנהל פרויקט, קוד מנהל פרויקט, קוד חשבון, שם חשבון, קוד סעיף תקציבי, סעיף תקציבי, אסמכתא, תאריך אסמכתא, תאריך לתשלום, תאריך פעילות, יתרה]&quot;]" />
-                      <FlowStep.Next>
-                        <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_10">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <av:Point x:Key="ShapeLocation">190,805</av:Point>
-                              <av:Size x:Key="ShapeSize">200,52</av:Size>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="קוד מנהל פרויקט" DataTable="[io_dt_data]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="SortDataTable_3" Order="Ascending" OutputDataTable="[io_dt_data]" SortOrder="Ascending" />
-                        </FlowStep>
-                      </FlowStep.Next>
-                    </FlowStep>
-                  </FlowStep.Next>
+                    </ui:JoinDataTables.Arguments>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:JoinDataTables>
                 </FlowStep>
               </FlowStep.Next>
             </FlowStep>
@@ -318,7 +270,7 @@
         <x:Reference>__ReferenceID2</x:Reference>
       </FlowStep.Next>
     </FlowStep>
-    <FlowStep x:Name="__ReferenceID9" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+    <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">190,0</av:Point>
@@ -384,8 +336,6 @@
     </FlowStep>
     <x:Reference>__ReferenceID4</x:Reference>
     <x:Reference>__ReferenceID5</x:Reference>
-    <x:Reference>__ReferenceID6</x:Reference>
-    <x:Reference>__ReferenceID7</x:Reference>
     <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_11">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -396,6 +346,6 @@
       </sap:WorkflowViewStateService.ViewState>
       <ui:Comment sap:VirtualizedContainerService.HintSize="200,75" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// TODO retrieve manager emails" />
     </FlowStep>
-    <x:Reference>__ReferenceID8</x:Reference>
+    <x:Reference>__ReferenceID6</x:Reference>
   </Flowchart>
 </Activity>

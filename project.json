@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "CollectionReport_Dispatch",
   "projectId": "c2282f1e-aef3-4e20-b63f-1b84d2bd12e7",
   "description": "DispatchQueueItem.s-Global",
@@ -11,7 +11,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "23.10.7.0",
-  "projectVersion": "3.0.1-alpha-ThersdayTest",
+  "projectVersion": "4.0.0",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
