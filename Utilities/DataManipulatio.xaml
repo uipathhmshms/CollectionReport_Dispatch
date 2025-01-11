@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1137,725</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1137,1262</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DataManipulatio_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -81,15 +81,23 @@
       <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DataManipulatio" sap:VirtualizedContainerService.HintSize="450,660" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DataManipulatio" sap:VirtualizedContainerService.HintSize="450,1197" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="בשורות בהם יש מנהל משני לפרויקט - ניצור שכפול של שורות אלה עם השם של המנהל המשני כדי שאותו מקרה יופיע בדוח של שני המנהלים (הראשי והמשני)" Code="' Create a local copy of the DataTable to work with&#xA;Dim localDt As DataTable = io_dt_data.Clone()&#xA;localDt.Clear() ' Removes all rows from the DataTable while preserving the table's structure&#xA;For Each row As DataRow In io_dt_data.Rows&#xA;    localDt.ImportRow(row)&#xA;Next&#xA;&#xA;' Create a list to hold the modified rows&#xA;Dim newRows As New List(Of DataRow)&#xA;&#xA;' Use LINQ to transform the rows&#xA;newRows = localDt.AsEnumerable() _&#xA;    .SelectMany(Function(row)&#xA;                    ' Add the original row to the collection&#xA;                    Dim result As New List(Of DataRow) From {row}&#xA;                    &#xA;                    ' Check if &quot;מנהל פרויקט שני&quot; has a value&#xA;                    If Not String.IsNullOrEmpty(DirectCast(row(&quot;קוד מנהל פרויקט שני&quot;), Object).ToString()) Then&#xA;                        ' Create a new row with the same data but update the &quot;שם מנהל פרויקט&quot;&#xA;                        Dim newRow As DataRow = localDt.NewRow()&#xA;                        newRow.ItemArray = DirectCast(row.ItemArray.Clone(), Object())&#xA;                        newRow(&quot;שם מנהל פרויקט&quot;) = row(&quot;שם מנהל פרויקט שני&quot;)&#xA;                        newRow(&quot;קוד מנהל פרויקט&quot;) = row(&quot;קוד מנהל פרויקט שני&quot;)&#xA;                        ' Add the new row to the collection&#xA;                        result.Add(newRow)&#xA;                    End If&#xA;                    &#xA;                    Return result&#xA;                End Function) _&#xA;    .ToList()&#xA;&#xA;' Clear the original DataTable and add all rows back&#xA;io_dt_data.Clear()&#xA;For Each newRow As DataRow In newRows&#xA;    io_dt_data.ImportRow(newRow)&#xA;Next" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="388,225" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="בשורות בהם יש מנהל משני לפרויקט - ניצור שכפול של שורות אלה עם השם של המנהל המשני כדי שאותו מקרה יופיע בדוח של שני המנהלים (הראשי והמשני)" Code="' Create a local copy of the DataTable to work with&#xA;Dim localDt As DataTable = io_dt_data.Clone()&#xA;localDt.Clear() ' Removes all rows from the DataTable while preserving the table's structure&#xA;For Each row As DataRow In io_dt_data.Rows&#xA;    localDt.ImportRow(row)&#xA;Next&#xA;&#xA;' Create a list to hold the modified rows&#xA;Dim newRows As New List(Of DataRow)&#xA;&#xA;' Use LINQ to transform the rows&#xA;newRows = localDt.AsEnumerable() _&#xA;    .SelectMany(Function(row)&#xA;                    ' Add the original row to the collection&#xA;                    Dim result As New List(Of DataRow) From {row}&#xA;                    &#xA;                    ' Check if &quot;מנהל פרויקט שני&quot; has a value&#xA;                    If Not String.IsNullOrEmpty(DirectCast(row(&quot;קוד מנהל פרויקט שני&quot;), Object).ToString()) Then&#xA;                        ' Create a new row with the same data but update the &quot;שם מנהל פרויקט&quot;&#xA;                        Dim newRow As DataRow = localDt.NewRow()&#xA;                        newRow.ItemArray = DirectCast(row.ItemArray.Clone(), Object())&#xA;                        newRow(&quot;שם מנהל פרויקט&quot;) = row(&quot;שם מנהל פרויקט שני&quot;)&#xA;                        newRow(&quot;קוד מנהל פרויקט&quot;) = row(&quot;קוד מנהל פרויקט שני&quot;)&#xA;                        ' Add the new row to the collection&#xA;                        result.Add(newRow)&#xA;                    End If&#xA;                    &#xA;                    Return result&#xA;                End Function) _&#xA;    .ToList()&#xA;&#xA;' Clear the original DataTable and add all rows back&#xA;io_dt_data.Clear()&#xA;For Each newRow As DataRow In newRows&#xA;    io_dt_data.ImportRow(newRow)&#xA;Next" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="388,222" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
       <ui:InvokeCode.Arguments>
         <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_data">[io_dt_data]</InOutArgument>
       </ui:InvokeCode.Arguments>
@@ -99,7 +107,8 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeCode>
-    <ui:FilterDataTable DataTable="[io_dt_data]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="388,163" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[io_dt_data]" SelectColumnsMode="Keep">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Modified data table - adding new row for every case where 'קוד מנהל פרויקט שני' is not empty&quot;]" />
+    <ui:FilterDataTable DataTable="[io_dt_data]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="388,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[io_dt_data]" SelectColumnsMode="Keep">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
           <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="NOTEMPTY">
@@ -125,6 +134,8 @@
         </scg:List>
       </ui:FilterDataTable.SelectColumns>
     </ui:FilterDataTable>
-    <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="קוד מנהל פרויקט" DataTable="[io_dt_data]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="388,81" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Ascending" OutputDataTable="[io_dt_data]" SortOrder="Ascending" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Filtered data table with rows that contains data in column 'מזהה מנהל פרויקט' and select only the columns: 'שם מנהל פרויקט','קוד מנהל פרויקט','קוד חשבון','שם חשבון','קוד סעיף תקציבי','סעיף תקציבי','אסמכתא','תאריך אסמכתא','תאריך לתשלום','תאריך פעילות','יתרה'&quot;]" />
+    <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="קוד מנהל פרויקט" DataTable="[io_dt_data]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="388,80" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Ascending" OutputDataTable="[io_dt_data]" SortOrder="Ascending" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Sorted the datatable by column 'קוד מנהל פרויקט'&quot;]" />
   </Sequence>
 </Activity>

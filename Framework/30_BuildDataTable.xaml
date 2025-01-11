@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property Name="io_dt_dataForBulkAddQueueITems" Type="InOutArgument(sd:DataTable)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1137,827</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1137,702</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -161,9 +161,11 @@
               <av:PointCollection x:Key="ConnectorLocation">210,254.9 210,277.9</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Adds rows if neccessary +&#xD;&#xA;sorts +&#xD;&#xA;filters it" DisplayName="Utilities\DataManipulatio.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Utilities\DataManipulatio.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Adds rows if neccessary +&#xA;sorts +&#xA;filters it" DisplayName="Utilities\DataManipulatio.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,170" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Utilities\DataManipulatio.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <scg:Dictionary x:TypeArguments="x:String, Argument" />
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_data">
+                <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_data" />
+              </InOutArgument>
             </ui:InvokeWorkflowFile.Arguments>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
