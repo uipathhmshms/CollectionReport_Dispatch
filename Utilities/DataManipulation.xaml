@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1137,1262</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>541,1262</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DataManipulatio_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -131,6 +131,7 @@
           <InArgument x:TypeArguments="x:String">["תאריך לתשלום"]</InArgument>
           <InArgument x:TypeArguments="x:String">["תאריך פעילות"]</InArgument>
           <InArgument x:TypeArguments="x:String">["יתרה"]</InArgument>
+          <InArgument x:TypeArguments="x:String">["דוא""ל עבודה"]</InArgument>
         </scg:List>
       </ui:FilterDataTable.SelectColumns>
     </ui:FilterDataTable>
